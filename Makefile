@@ -1,15 +1,31 @@
-all: clean prepare dist
+NAME=elm-table
+MATERIALIZE=./bower_components/Materialize/dist
+DIST=./dist
+SRC=./src
+VERSION=`cat ../elm-package.json | grep '"version"' | sed s/[version\|,\|\"\|:\|[:blank:]]//g`
+
+all: clean dist
+
+install:
+	bower install -y
+	elm-package install -y
 
 clean:
-	rm -rf ./dist
+	rm -rf $(DIST)
 
-prepare:
-	mkdir -p ./dist/js
-	mkdir -p ./dist/css
-	mkdir -p ./dist/font
+clean-all: clean
+	rm -rf ./bower_components/ ./elm-stuff/
 
 dist:
-	cp ./src/index.html ./dist/
-	elm-make ./src/Main.elm --output ./dist/elm.js
+	mkdir -p $(DIST)/js
+	mkdir -p $(DIST)/css
+	mkdir -p $(DIST)/font
+	cp $(MATERIALIZE)/css/materialize.min.css $(DIST)/css/
+	cp -R $(MATERIALIZE)/font/* $(DIST)/font/
+	cp $(SRC)/index.html $(DIST)
+	elm-make $(SRC)/Main.elm --output $(DIST)/js/elm.js
 
-.PHONY: clean prepare dist
+package: clean-all install dist
+	cd $(DIST) && tar cvf $(NAME)-$(VERSION).tar.gz ./*
+
+.PHONY: install clean clean-all dist package

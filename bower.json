@@ -1,0 +1,6 @@
+{
+  "name": "elm-table",
+  "dependencies": {
+    "Materialize": "materialize#~0.97.3"
+  }
+}
