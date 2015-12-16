@@ -1,4 +1,4 @@
-NAME=elm-table
+NAME=elm-test
 MATERIALIZE=./bower_components/Materialize/dist
 DIST=./dist
 SRC=./src
@@ -19,13 +19,11 @@ clean-all: clean
 dist:
 	mkdir -p $(DIST)/js
 	mkdir -p $(DIST)/css
-	mkdir -p $(DIST)/font
 	cp $(MATERIALIZE)/css/materialize.min.css $(DIST)/css/
-	cp -R $(MATERIALIZE)/font/* $(DIST)/font/
 	cp $(SRC)/index.html $(DIST)
 	elm-make $(SRC)/Main.elm --output $(DIST)/js/elm.js
 
-package: clean-all install dist
+package: dist
 	cd $(DIST) && tar cJvf $(NAME)-$(VERSION).tar.xz ./*
 
 .PHONY: install clean clean-all dist package

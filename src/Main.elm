@@ -27,10 +27,11 @@ view address model =
 
 -- MAIN
 
-headerData = [ "jeden", "dwa", "trzy" ]
+headerData = [ "first", "second", "third" ]
 content = [
-    [ "taka", "dziwna", "sytuacja" ]
-  , [ "jeszcze", "bardziej", "dziwna" ]
+    [ "one", "two", "three" ]
+  , [ "four", "five", "six" ]
+  , [ "seven", "eight", "nine" ]
   ]
 
 init : Model
