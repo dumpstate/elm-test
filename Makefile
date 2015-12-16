@@ -26,6 +26,6 @@ dist:
 	elm-make $(SRC)/Main.elm --output $(DIST)/js/elm.js
 
 package: clean-all install dist
-	cd $(DIST) && tar cvf $(NAME)-$(VERSION).tar.gz ./*
+	cd $(DIST) && tar cJvf $(NAME)-$(VERSION).tar.xz ./*
 
 .PHONY: install clean clean-all dist package

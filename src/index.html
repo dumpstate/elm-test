@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+
     <script type="text/javascript" src="js/elm.js"></script>
   </head>
   <body>
     <div id="app" />
   </body>
   <script>
-    var app = document.getElementById('app');
-    Elm.embed(Elm.Main, app);
+    Elm.embed(
+      Elm.Main,
+      document.getElementById('app'));
   </script>
 </html>
