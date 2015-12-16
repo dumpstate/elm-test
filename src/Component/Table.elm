@@ -12,7 +12,6 @@ type alias Model =
     , body : List (List String)
     }
 
-
 -- VIEW
 
 view : Model -> Html
